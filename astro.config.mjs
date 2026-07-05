@@ -6,17 +6,17 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
-	integrations: [
-		react(),
-		sitemap({
-			filter: (page) => new URL(page).pathname !== '/demo/',
-		}),
-	],
-	vite: {
-		plugins: [tailwindcss()],
-		ssr: {
-			noExternal: ['@lifanh/quiet-paper'],
-		},
-	},
+  site: 'https://example.com',
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => new URL(page).pathname !== '/demo/',
+    }),
+  ],
+  vite: {
+    plugins: [tailwindcss()],
+    ssr: {
+      noExternal: ['@lifanh/quiet-paper'],
+    },
+  },
 });

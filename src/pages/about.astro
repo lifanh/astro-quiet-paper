@@ -6,22 +6,22 @@ import { site } from "../site";
 const about = await getEntry("pages", "about");
 
 if (!about) {
-	throw new Error("Missing src/content/pages/about.md");
+  throw new Error("Missing src/content/pages/about.md");
 }
 
 const { Content } = await render(about);
 ---
 
 <BaseLayout
-	title={`${about.data.title} · ${site.name}`}
-	description={about.data.description}
+  title={`${about.data.title} · ${site.name}`}
+  description={about.data.description}
 >
-	<article class="max-w-measure">
-		<h1 class="m-0 text-2xl leading-tight">{about.data.title}</h1>
-		<div
-			class="mt-5 text-lg leading-relaxed [&_a]:break-words [&_code]:font-mono [&_code]:text-sm [&_p]:m-0 [&_p+p]:mt-5"
-		>
-			<Content />
-		</div>
-	</article>
+  <article class="max-w-measure">
+    <h1 class="m-0 text-2xl leading-tight">{about.data.title}</h1>
+    <div
+      class="mt-5 text-lg leading-relaxed [&_a]:break-words [&_code]:font-mono [&_code]:text-sm [&_p]:m-0 [&_p+p]:mt-5"
+    >
+      <Content />
+    </div>
+  </article>
 </BaseLayout>
