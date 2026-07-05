@@ -1,11 +1,11 @@
 {
-  "name": "lifan-astro-minimal-theme",
+  "name": "astro-quiet-paper",
   "description": "Astro starter — quiet paper marketing site + React demo islands (@lifanh/quiet-paper)",
   "type": "module",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lifanh/lifan-astro-minimal-theme.git"
+    "url": "git+https://github.com/lifanh/astro-quiet-paper.git"
   },
   "scripts": {
     "dev": "astro dev",

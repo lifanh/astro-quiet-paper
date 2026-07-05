@@ -1,4 +1,4 @@
-# Astro quiet paper starter
+# astro-quiet-paper
 
 Astro **template** for a prose-first personal site: static marketing pages + **React islands** styled with [`@lifanh/quiet-paper`](https://www.npmjs.com/package/@lifanh/quiet-paper).
 
@@ -15,7 +15,7 @@ Astro **template** for a prose-first personal site: static marketing pages + **R
 ## Quick start
 
 ```bash
-git clone git@github.com:lifanh/lifan-astro-minimal-theme.git my-site
+git clone git@github.com:lifanh/astro-quiet-paper.git my-site
 cd my-site
 npm install
 npm run dev

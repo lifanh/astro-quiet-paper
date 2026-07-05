@@ -7,7 +7,7 @@ To hack on the design system locally:
 ```bash
 git clone git@github.com:lifanh/quiet-paper.git ../quiet-paper
 cd ../quiet-paper && npm install && npm run build
-cd ../lifan-astro-minimal-theme
+cd ../astro-quiet-paper
 npm install ../quiet-paper
 npm run dev
 ```
