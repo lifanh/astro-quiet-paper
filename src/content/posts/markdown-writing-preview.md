@@ -7,6 +7,10 @@ tags: ["writing", "preview", "markdown"]
 
 Use this note when you want to see how Markdown turns into a finished article on this template. Everything below is ordinary Markdown (plus a few explicit HTML callouts) rendered inside `@lifanh/quiet-paper` **Prose** on `/writing/[...slug]`.
 
+# Primary prose heading
+
+Most posts should rely on the frontmatter title above. This body-level `#` is included so the preview catches the spacing and scale of Markdown H1s when they appear after existing content.
+
 ## Headings and body text
 
 Paragraphs use a comfortable measure and relaxed line height. **Strong emphasis** stays in the ink color; *italic* inherits the same rhythm. Inline `code` gets a hairline border and surface background.
