@@ -2,7 +2,7 @@
 
 export const site = {
   name: "Lifan",
-  url: "https://example.com",
+  url: "https://astro-quiet-paper.lifanh.workers.dev/",
   defaultTitle: "Lifan · Quiet paper",
   defaultDescription:
     "Personal site and writing — quiet paper, Astro + React.",

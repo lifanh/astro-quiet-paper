@@ -4,9 +4,20 @@
   "type": "module",
   "version": "0.1.0",
   "license": "MIT",
+  "homepage": "https://astro-quiet-paper.lifanh.workers.dev/",
+  "keywords": [
+    "astro",
+    "astro-template",
+    "cloudflare-workers",
+    "markdown",
+    "personal-site",
+    "quiet-paper"
+  ],
   "cloudflare": {
     "label": "Astro quiet-paper",
-    "products": ["Workers"],
+    "products": [
+      "Workers"
+    ],
     "categories": [],
     "publish": true
   },
@@ -14,10 +25,14 @@
     "type": "git",
     "url": "git+https://github.com/lifanh/astro-quiet-paper.git"
   },
+  "bugs": {
+    "url": "https://github.com/lifanh/astro-quiet-paper/issues"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "check": "astro check",
+    "lint": "oxlint .",
     "preview": "astro preview",
     "preview:worker": "astro build && wrangler dev",
     "deploy": "wrangler deploy",
@@ -38,6 +53,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "oxlint": "^1.72.0",
     "typescript": "^6.0.3",
     "wrangler": "^4.0.0"
   }

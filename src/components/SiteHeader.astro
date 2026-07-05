@@ -4,6 +4,14 @@ import { primaryNav, site } from "../site";
 /** Shared horizontal padding + max width with main/footer */
 const shell =
   "mx-auto w-full max-w-[min(var(--measure-wide),calc(100%-var(--space-6)*2))] max-[720px]:max-w-[min(calc(100%-var(--space-4)*2),var(--measure-wide))]";
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+function isCurrentPage(href: string) {
+  const itemPath = href.replace(/\/$/, "") || "/";
+
+  return currentPath === itemPath || currentPath.startsWith(`${itemPath}/`);
+}
 ---
 
 <header
@@ -21,7 +29,9 @@ const shell =
   >
     {
       primaryNav.map((item) => (
-        <a href={item.href}>{item.label}</a>
+        <a href={item.href} aria-current={isCurrentPage(item.href) ? "page" : undefined}>
+          {item.label}
+        </a>
       ))
     }
   </nav>

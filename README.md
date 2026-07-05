@@ -2,9 +2,13 @@
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/lifanh/astro-quiet-paper)
 
+**Live preview:** <https://astro-quiet-paper.lifanh.workers.dev/>
+
 Astro **template** for a prose-first personal site: static pages, Markdown writing, and a hidden React island demo styled with [`@lifanh/quiet-paper`](https://www.npmjs.com/package/@lifanh/quiet-paper).
 
 **Quiet paper:** warm off-white, ink-like type, hairline borders, one restrained accent — no dashboard chrome.
+
+![Astro quiet-paper homepage preview](docs/preview.png)
 
 ## Stack
 
@@ -105,6 +109,7 @@ src/
 | Command | Action |
 |---------|--------|
 | `npm run dev` | Dev server `:4321` |
+| `npm run lint` | Oxlint source checks |
 | `npm run check` | Astro + TypeScript diagnostics |
 | `npm run build` | Static `dist/` |
 | `npm run preview` | Preview production build |
