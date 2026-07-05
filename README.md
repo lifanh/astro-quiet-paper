@@ -1,5 +1,7 @@
 # astro-quiet-paper
 
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/lifanh/astro-quiet-paper)
+
 Astro **template** for a prose-first personal site: static pages, Markdown writing, and a hidden React island demo styled with [`@lifanh/quiet-paper`](https://www.npmjs.com/package/@lifanh/quiet-paper).
 
 **Quiet paper:** warm off-white, ink-like type, hairline borders, one restrained accent — no dashboard chrome.
@@ -109,7 +111,29 @@ src/
 
 ## Deploy
 
-Any static host (Cloudflare Pages, Vercel, Netlify): build command `npm run build`, output `dist/`.
+### Deploy to Cloudflare Workers (one click)
+
+Use the **Deploy to Cloudflare** button above (or open the [deploy flow](https://deploy.workers.cloudflare.com/?url=https://github.com/lifanh/astro-quiet-paper)). Cloudflare will fork the repo into your GitHub account, connect **Workers Builds**, and deploy static assets from `dist/` using [`wrangler.jsonc`](wrangler.jsonc).
+
+Suggested build settings (usually auto-detected):
+
+| Setting | Value |
+|---------|--------|
+| Build command | `npm run build` |
+| Deploy command | `npm run deploy` |
+
+After the first deploy, set your public URL in `src/site.ts` and `astro.config.mjs` so RSS, sitemap, and canonical links are correct.
+
+Local equivalent:
+
+```bash
+npm run build
+npm run deploy
+```
+
+### Other static hosts
+
+Cloudflare Pages, Vercel, Netlify: build command `npm run build`, output directory `dist/`.
 
 Set the same production URL in `src/site.ts` and `astro.config.mjs` before publishing.
 

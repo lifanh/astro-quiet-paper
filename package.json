@@ -4,6 +4,12 @@
   "type": "module",
   "version": "0.1.0",
   "license": "MIT",
+  "cloudflare": {
+    "label": "Astro quiet-paper",
+    "products": ["Workers"],
+    "categories": [],
+    "publish": true
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lifanh/astro-quiet-paper.git"
@@ -13,6 +19,8 @@
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview",
+    "preview:worker": "astro build && wrangler dev",
+    "deploy": "wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {
@@ -30,6 +38,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "wrangler": "^4.0.0"
   }
 }
