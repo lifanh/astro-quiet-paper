@@ -1,6 +1,6 @@
 # astro-quiet-paper
 
-Astro **template** for a prose-first personal site: static marketing pages + **React islands** styled with [`@lifanh/quiet-paper`](https://www.npmjs.com/package/@lifanh/quiet-paper).
+Astro **template** for a prose-first personal site: static pages, Markdown writing, and a hidden React island demo styled with [`@lifanh/quiet-paper`](https://www.npmjs.com/package/@lifanh/quiet-paper).
 
 **Quiet paper:** warm off-white, ink-like type, hairline borders, one restrained accent — no dashboard chrome.
 
@@ -9,8 +9,10 @@ Astro **template** for a prose-first personal site: static marketing pages + **R
 | Layer | Choice |
 |--------|--------|
 | Static | Astro 7 |
+| Writing | Astro content collections + Markdown |
 | Islands | React 19 + `@astrojs/react` |
 | Styles | Tailwind CSS v4 + design system tokens |
+| Discovery | RSS, sitemap, robots |
 
 ## Quick start
 
@@ -23,12 +25,30 @@ npm run dev
 
 Open `http://localhost:4321`.
 
-**Before `@lifanh/quiet-paper` is on npm**, link locally:
+Before deploying, replace the template identity and URL in `src/site.ts` and `astro.config.mjs`.
 
-```bash
-npm install /path/to/quiet-paper
-# run `npm run build` in that repo first
+## Writing
+
+Posts live in `src/content/posts/*.md`:
+
+```md
+---
+title: "Designing with less"
+description: "Short summary for lists and SEO."
+date: 2026-07-05
+tags: ["design", "systems"]
+draft: false
+---
 ```
+
+Routes included:
+
+- `/writing` — all non-draft posts
+- `/writing/[...slug]` — individual posts
+- `/rss.xml` — feed for non-draft posts
+- `/robots.txt` and `/sitemap-index.xml` — crawler discovery
+
+The homepage automatically shows the latest three non-draft posts.
 
 ## Design system setup
 
@@ -47,22 +67,17 @@ Components in React islands:
 import { Panel, Button } from "@lifanh/quiet-paper";
 ```
 
-In `.astro` pages:
-
-```astro
----
-import DemoPrototype from "../components/DemoPrototype.tsx";
----
-<DemoPrototype client:load />
-```
+The developer demo route stays at `/demo`, but it is intentionally not linked from the site chrome.
 
 ## Customize
 
 | File | What to change |
 |------|----------------|
-| `src/site.ts` | Site name, nav, default meta |
+| `src/site.ts` | Site name, public URL, nav, default meta |
+| `astro.config.mjs` | Astro `site` URL for sitemap/canonical output |
 | `src/pages/index.astro` | Homepage copy (Work / Writing / Contact) |
-| `src/pages/about.astro` | About |
+| `src/content/pages/about.md` | About page copy |
+| `src/content/posts/*.md` | Writing entries |
 | `src/components/*` | Demo composites — copy patterns, don’t fork primitives |
 
 Primitives (`Button`, `Field`, `ErrorState`, …) live in the **design system repo**, not here.
@@ -71,9 +86,13 @@ Primitives (`Button`, `Field`, `ErrorState`, …) live in the **design system re
 
 ```text
 src/
-├── layouts/BaseLayout.astro   # shell + global CSS
-├── components/                # app-specific React (demos)
-├── pages/                     # routes
+├── components/                # app-specific React demos
+├── content/pages/about.md     # Markdown-backed About page
+├── content/posts/             # Markdown writing
+├── content.config.ts          # page/post frontmatter schemas
+├── layouts/BaseLayout.astro   # shell + global meta + CSS
+├── lib/posts.ts               # writing helpers
+├── pages/                     # routes, RSS, robots
 ├── site.ts                    # nav + metadata
 └── styles/global.css          # Tailwind + DS imports
 ```
@@ -83,12 +102,15 @@ src/
 | Command | Action |
 |---------|--------|
 | `npm run dev` | Dev server `:4321` |
+| `npm run check` | Astro + TypeScript diagnostics |
 | `npm run build` | Static `dist/` |
 | `npm run preview` | Preview production build |
 
 ## Deploy
 
 Any static host (Cloudflare Pages, Vercel, Netlify): build command `npm run build`, output `dist/`.
+
+Set the same production URL in `src/site.ts` and `astro.config.mjs` before publishing.
 
 ## Related repos
 

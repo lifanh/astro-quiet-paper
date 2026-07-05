@@ -1,25 +1,27 @@
 ---
+import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../site";
+
+const about = await getEntry("pages", "about");
+
+if (!about) {
+	throw new Error("Missing src/content/pages/about.md");
+}
+
+const { Content } = await render(about);
 ---
 
 <BaseLayout
-	title="About · Lifan"
-	description="How this site and the quiet-paper design system are built."
+	title={`${about.data.title} · ${site.name}`}
+	description={about.data.description}
 >
 	<article class="max-w-measure">
-		<h1 class="m-0 text-2xl leading-tight">About this site</h1>
-		<p class="m-0 mt-5 text-lg leading-relaxed">
-			Astro for marketing pages, React islands for UI demos, Tailwind v4 fed by
-			<code class="font-mono text-sm">@lifanh/quiet-paper</code> tokens and
-			components.
-		</p>
-		<p class="m-0 mt-5 text-lg leading-relaxed text-muted">
-			This page exists to prove <strong class="font-normal text-text"
-				>Lesson 11</strong
-			>: one layout shell, new route, no copied header markup.
-		</p>
-		<p class="m-0 mt-8 text-lg leading-relaxed">
-			<a href="/">← Home</a>
-		</p>
+		<h1 class="m-0 text-2xl leading-tight">{about.data.title}</h1>
+		<div
+			class="mt-5 text-lg leading-relaxed [&_a]:break-words [&_code]:font-mono [&_code]:text-sm [&_p]:m-0 [&_p+p]:mt-5"
+		>
+			<Content />
+		</div>
 	</article>
 </BaseLayout>

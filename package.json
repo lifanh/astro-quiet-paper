@@ -3,6 +3,7 @@
   "description": "Astro starter — quiet paper marketing site + React demo islands (@lifanh/quiet-paper)",
   "type": "module",
   "version": "0.1.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lifanh/astro-quiet-paper.git"
@@ -10,11 +11,14 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check": "astro check",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.0",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
     "@lifanh/quiet-paper": "^0.1.0",
     "@tailwindcss/vite": "^4.3.1",
     "@types/react": "^19.2.17",
@@ -23,5 +27,9 @@
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "tailwindcss": "^4.3.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.3"
   }
 }

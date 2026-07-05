@@ -1,12 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { formatPostDate, getPublishedPosts, postPath } from "../lib/posts";
+import { site } from "../site";
+
+const recentPosts = (await getPublishedPosts()).slice(0, 3);
 ---
 
 <BaseLayout
-	title="Lifan · Quiet paper"
-	description="Personal site and quiet-paper design system study."
+	title={site.defaultTitle}
+	description={site.defaultDescription}
 >
 	<section class="max-w-measure" aria-labelledby="page-title">
+		<h1 id="page-title" class="sr-only">{site.name}</h1>
 		<p class="m-0 text-lg leading-relaxed">
 			I'm Lifan, a backend developer learning visual design by building a
 			minimal <em>quiet paper</em> system for my own sites and app demos.
@@ -27,12 +33,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		</p>
 		<ul class="m-0 mt-8 list-none space-y-4 p-0 text-lg leading-relaxed">
 			<li>
-				<a href="/demo">Design system playground</a>
-				<span class="font-ui text-sm text-muted"> — Astro + React demos</span>
+				<a href="https://github.com/lifanh/quiet-paper" rel="noopener noreferrer"
+					>Quiet paper design system</a
+				>
+				<span class="font-ui text-sm text-muted"> — tokens and React primitives</span>
 			</li>
 			<li>
-				<a href="https://github.com/" rel="noopener noreferrer">Open source</a>
-				<span class="font-ui text-sm text-muted"> — replace with your repos</span>
+				<a href="https://github.com/lifanh/astro-quiet-paper" rel="noopener noreferrer"
+					>Astro quiet-paper template</a
+				>
+				<span class="font-ui text-sm text-muted"> — prose-first starter</span>
 			</li>
 		</ul>
 	</section>
@@ -49,14 +59,30 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			Notes and posts when there is something worth publishing—no feed for its
 			own sake.
 		</p>
-		<ul class="m-0 mt-8 list-none space-y-4 p-0 text-lg leading-relaxed">
-			<li>
-				<a href="../lessons/0001-why-tokens-beat-components.html"
-					>Lesson notes (local)</a
-				>
-				<span class="font-ui text-sm text-muted"> — teaching workspace</span>
-			</li>
-		</ul>
+		{
+			recentPosts.length > 0 ? (
+				<ul class="m-0 mt-8 list-none space-y-5 p-0 text-lg leading-relaxed">
+					{recentPosts.map((post) => (
+						<li>
+							<a href={postPath(post)}>{post.data.title}</a>
+							<span class="font-ui text-sm text-muted">
+								{" "}— {formatPostDate(post.data.date)}
+							</span>
+							<p class="m-0 mt-2 text-base leading-relaxed text-muted">
+								{post.data.description}
+							</p>
+						</li>
+					))}
+				</ul>
+			) : (
+				<p class="m-0 mt-8 text-lg leading-relaxed text-muted">
+					No writing published yet.
+				</p>
+			)
+		}
+		<p class="m-0 mt-8 text-lg leading-relaxed">
+			<a href="/writing">All writing →</a>
+		</p>
 	</section>
 
 	<section
@@ -68,8 +94,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			Contact
 		</h2>
 		<p class="m-0 mt-5 text-lg leading-relaxed">
-			<a href="mailto:you@example.com">you@example.com</a>
-			<span class="text-muted"> — replace with your address</span>
+			<a href="mailto:hello@example.com">hello@example.com</a>
 		</p>
 	</section>
 </BaseLayout>

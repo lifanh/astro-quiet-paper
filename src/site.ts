@@ -2,9 +2,10 @@
 
 export const site = {
 	name: "Lifan",
+	url: "https://example.com",
 	defaultTitle: "Lifan · Quiet paper",
 	defaultDescription:
-		"Personal site — quiet paper, Astro + React.",
+		"Personal site and writing — quiet paper, Astro + React.",
 } as const;
 
 export type NavItem = {
@@ -15,7 +16,6 @@ export type NavItem = {
 /** Primary nav — same on every page */
 export const primaryNav: NavItem[] = [
 	{ label: "Work", href: "/#work" },
-	{ label: "Writing", href: "/#writing" },
+	{ label: "Writing", href: "/writing" },
 	{ label: "About", href: "/about" },
-	{ label: "Demo", href: "/demo" },
 ];
