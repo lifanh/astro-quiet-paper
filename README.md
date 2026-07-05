@@ -78,7 +78,7 @@ The developer demo route stays at `/demo`, but it is intentionally not linked fr
 | `src/pages/index.astro` | Homepage copy (Work / Writing / Contact) |
 | `src/content/pages/about.md` | About page copy |
 | `src/content/posts/*.md` | Writing entries |
-| `src/components/*` | Demo composites — copy patterns, don’t fork primitives |
+| `src/demo/*` | Demo composites — copy patterns, don’t fork primitives |
 
 Primitives (`Button`, `Field`, `ErrorState`, …) live in the **design system repo**, not here.
 
@@ -86,7 +86,8 @@ Primitives (`Button`, `Field`, `ErrorState`, …) live in the **design system re
 
 ```text
 src/
-├── components/                # app-specific React demos
+├── components/                # site chrome (header, footer)
+├── demo/                      # React islands for /demo only
 ├── content/pages/about.md     # Markdown-backed About page
 ├── content/posts/             # Markdown writing
 ├── content.config.ts          # page/post frontmatter schemas
