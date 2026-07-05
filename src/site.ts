@@ -15,7 +15,6 @@ export type NavItem = {
 
 /** Primary nav — same on every page */
 export const primaryNav: NavItem[] = [
-	{ label: "Work", href: "/#work" },
 	{ label: "Writing", href: "/writing" },
 	{ label: "About", href: "/about" },
 ];
