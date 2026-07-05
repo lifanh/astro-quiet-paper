@@ -1,4 +1,5 @@
 ---
+import { Prose } from "@lifanh/quiet-paper";
 import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../site";
@@ -18,10 +19,8 @@ const { Content } = await render(about);
 >
   <article class="max-w-measure">
     <h1 class="m-0 text-2xl leading-tight">{about.data.title}</h1>
-    <div
-      class="mt-5 text-lg leading-relaxed [&_a]:break-words [&_code]:font-mono [&_code]:text-sm [&_p]:m-0 [&_p+p]:mt-5"
-    >
+    <Prose className="mt-5 text-lg leading-relaxed">
       <Content />
-    </div>
+    </Prose>
   </article>
 </BaseLayout>

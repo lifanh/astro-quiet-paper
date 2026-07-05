@@ -1,4 +1,5 @@
 ---
+import { Prose } from "@lifanh/quiet-paper";
 import { render, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
@@ -52,11 +53,9 @@ const olderPost = currentPostIndex >= 0 ? posts[currentPostIndex + 1] : undefine
       </p>
     </header>
 
-    <div
-      class="post-content mt-10 text-lg leading-relaxed"
-    >
+    <Prose className="mt-10 text-lg leading-relaxed">
       <Content />
-    </div>
+    </Prose>
 
     {
       (olderPost || newerPost) && (

@@ -1,6 +1,6 @@
 # Local dev
 
-Default: install from npm (`@lifanh/quiet-paper@^0.1.0`).
+Default: install from npm (`@lifanh/quiet-paper@^0.2.0`).
 
 To hack on the design system locally:
 
@@ -12,4 +12,4 @@ npm install ../quiet-paper
 npm run dev
 ```
 
-Revert with `npm install @lifanh/quiet-paper@^0.1.0` when done.
+Revert with `npm install @lifanh/quiet-paper@^0.2.0` when done.

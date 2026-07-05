@@ -62,15 +62,16 @@ Tokens and utilities come from the package (Tailwind v4 Pattern A). Already wire
 
 ```css
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "@lifanh/quiet-paper/styles/tailwind-sources.css";
 @import "@lifanh/quiet-paper/styles/tokens.css" layer(theme);
 @import "@lifanh/quiet-paper/styles/tailwind-theme.css";
 ```
 
-Components in React islands:
+Components in React islands and rendered Markdown pages:
 
 ```tsx
-import { Panel, Button } from "@lifanh/quiet-paper";
+import { Panel, Button, Prose } from "@lifanh/quiet-paper";
 ```
 
 The developer demo route stays at `/demo`, but it is intentionally not linked from the site chrome.
