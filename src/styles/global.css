@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "@lifanh/quiet-paper/styles/tailwind-sources.css";
+@import "@lifanh/quiet-paper/styles/tokens.css" layer(theme);
+@import "@lifanh/quiet-paper/styles/tailwind-theme.css";
+
+@layer base {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        @apply antialiased bg-bg text-text font-sans;
+        font-size: 100%;
+        line-height: var(--leading-normal);
+        text-rendering: optimizeLegibility;
+    }
+
+    body {
+        @apply m-0 min-w-[320px];
+    }
+
+    img,
+    svg {
+        @apply block max-w-full;
+    }
+
+    a {
+        @apply text-accent underline-offset-[0.18em];
+    }
+
+    a:hover {
+        @apply text-accent-hover;
+    }
+
+    :focus-visible {
+        @apply outline outline-1 outline-accent outline-offset-4;
+    }
+
+    ::selection {
+        background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+    }
+}

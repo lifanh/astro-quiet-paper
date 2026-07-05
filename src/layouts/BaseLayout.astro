@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { site } from "../site";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = site.defaultTitle,
+	description = site.defaultDescription,
+} = Astro.props;
+
+const mainShell =
+	"mx-auto w-full max-w-[min(var(--measure-wide),calc(100%-var(--space-6)*2))] py-16 max-[720px]:max-w-[min(calc(100%-var(--space-4)*2),var(--measure-wide))] max-[720px]:py-12";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<SiteHeader />
+		<main class={mainShell}>
+			<slot />
+		</main>
+		<SiteFooter />
+	</body>
+</html>

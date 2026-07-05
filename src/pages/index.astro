@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="Lifan · Quiet paper"
+	description="Personal site and quiet-paper design system study."
+>
+	<section class="max-w-measure" aria-labelledby="page-title">
+		<p class="m-0 text-lg leading-relaxed">
+			I'm Lifan, a backend developer learning visual design by building a
+			minimal <em>quiet paper</em> system for my own sites and app demos.
+		</p>
+	</section>
+
+	<div class="my-12 h-px w-full bg-border" aria-hidden="true"></div>
+
+	<section
+		id="work"
+		class="max-w-measure"
+		aria-labelledby="work-title"
+	>
+		<h2 id="work-title" class="m-0 mt-12 text-xl leading-tight">Work</h2>
+		<p class="m-0 mt-5 text-lg leading-relaxed">
+			I ship backend systems and APIs; I'm applying the same discipline—tokens,
+			constraints, explicit states—to personal frontends.
+		</p>
+		<ul class="m-0 mt-8 list-none space-y-4 p-0 text-lg leading-relaxed">
+			<li>
+				<a href="/demo">Design system playground</a>
+				<span class="font-ui text-sm text-muted"> — Astro + React demos</span>
+			</li>
+			<li>
+				<a href="https://github.com/" rel="noopener noreferrer">Open source</a>
+				<span class="font-ui text-sm text-muted"> — replace with your repos</span>
+			</li>
+		</ul>
+	</section>
+
+	<section
+		id="writing"
+		class="max-w-measure"
+		aria-labelledby="writing-title"
+	>
+		<h2 id="writing-title" class="m-0 mt-12 text-xl leading-tight">
+			Writing
+		</h2>
+		<p class="m-0 mt-5 text-lg leading-relaxed text-muted">
+			Notes and posts when there is something worth publishing—no feed for its
+			own sake.
+		</p>
+		<ul class="m-0 mt-8 list-none space-y-4 p-0 text-lg leading-relaxed">
+			<li>
+				<a href="../lessons/0001-why-tokens-beat-components.html"
+					>Lesson notes (local)</a
+				>
+				<span class="font-ui text-sm text-muted"> — teaching workspace</span>
+			</li>
+		</ul>
+	</section>
+
+	<section
+		id="contact"
+		class="max-w-measure"
+		aria-labelledby="contact-title"
+	>
+		<h2 id="contact-title" class="m-0 mt-12 text-xl leading-tight">
+			Contact
+		</h2>
+		<p class="m-0 mt-5 text-lg leading-relaxed">
+			<a href="mailto:you@example.com">you@example.com</a>
+			<span class="text-muted"> — replace with your address</span>
+		</p>
+	</section>
+</BaseLayout>
