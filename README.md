@@ -56,6 +56,8 @@ Routes included:
 
 The homepage automatically shows the latest three non-draft posts.
 
+Fenced `mermaid` code blocks are rendered to inline SVG at build time. The original Mermaid source remains available under each diagram’s “Mermaid source” disclosure. Generated SVGs are cached in `src/generated/mermaid/`; commit those files so Cloudflare Workers Builds can render the site without launching Chromium on every deploy. Locally, `npm run build` generates or repairs missing/invalid cache files before Astro starts. In CI/Workers Builds, it checks that every Mermaid fence under `src/` has a committed, complete SVG before Astro starts.
+
 ## Design system setup
 
 Tokens and utilities come from the package (Tailwind v4 Pattern A). Already wired in `src/styles/global.css`:
@@ -85,6 +87,7 @@ The developer demo route stays at `/demo`, but it is intentionally not linked fr
 | `src/pages/index.astro` | Homepage copy (Work / Writing / Contact) |
 | `src/content/pages/about.md` | About page copy |
 | `src/content/posts/*.md` | Writing entries |
+| `src/generated/mermaid/*.svg` | Build-time rendered Mermaid diagrams |
 | `src/demo/*` | Demo composites — copy patterns, don’t fork primitives |
 
 Primitives (`Button`, `Field`, `ErrorState`, …) live in the **design system repo**, not here.
@@ -100,7 +103,9 @@ src/
 ├── content.config.ts          # page/post frontmatter schemas
 ├── layouts/BaseLayout.astro   # shell + global meta + CSS
 ├── lib/posts.ts               # writing helpers
+├── lib/markdown/mermaid.js    # build-time Mermaid renderer/cache check
 ├── pages/                     # routes, RSS, robots
+├── generated/mermaid/         # committed SVG cache for Mermaid fences
 ├── site.ts                    # nav + metadata
 └── styles/global.css          # Tailwind + DS imports
 ```
@@ -113,6 +118,7 @@ src/
 | `npm run lint` | Oxlint source checks |
 | `npm run check` | Astro + TypeScript diagnostics |
 | `npm run build` | Static `dist/` |
+| `npm run mermaid:prune` | Remove stale generated Mermaid SVGs |
 | `npm run preview` | Preview production build |
 
 ## Deploy
@@ -126,14 +132,17 @@ Suggested build settings (usually auto-detected):
 | Setting | Value |
 |---------|--------|
 | Build command | `npm run build` |
-| Deploy command | `npm run deploy` |
+| Deploy command | `npx wrangler deploy` |
+
+If your site includes Mermaid diagrams, commit `src/generated/mermaid/*.svg` after a local build. If Cloudflare Workers Builds sees a new Mermaid block without a cached SVG, the build fails with instructions instead of silently omitting the diagram.
+
+CI/Workers Builds skip Puppeteer’s browser download because they only validate committed SVGs. If a local build needs to render a new diagram and Puppeteer reports a missing browser, run `npx puppeteer browsers install chrome-headless-shell`, then run `npm run build` again. If you change the Mermaid renderer or theme, run `npm run build` to refresh SVG cache files, then run `npx astro build --force` once so Astro does not reuse old rendered Markdown from its content cache. After editing or removing diagrams, run `npm run mermaid:prune` to drop orphaned SVG cache files.
 
 After the first deploy, set your public URL in `src/site.ts` and `astro.config.mjs` so RSS, sitemap, and canonical links are correct.
 
 Local equivalent:
 
 ```bash
-npm run build
 npm run deploy
 ```
 

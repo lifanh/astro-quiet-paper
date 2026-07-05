@@ -66,4 +66,41 @@
     .skip-link:focus-visible {
         transform: translateY(0);
     }
+
+    .qp-mermaid {
+        margin: var(--space-6) 0;
+    }
+
+    .qp-mermaid-render {
+        overflow-x: auto;
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-md);
+        background: var(--color-surface);
+        padding: var(--space-4);
+    }
+
+    .qp-mermaid-render svg {
+        height: auto;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .qp-mermaid .qp-mermaid-source {
+        margin: var(--space-3) 0 0;
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-md);
+        background: transparent;
+        padding: var(--space-3);
+    }
+
+    .qp-mermaid .qp-mermaid-source summary {
+        cursor: pointer;
+        color: var(--color-text-muted);
+        font-family: var(--font-ui);
+        font-size: var(--text-xs);
+    }
+
+    .qp-mermaid .qp-mermaid-source pre {
+        margin: var(--space-3) 0 0;
+    }
 }

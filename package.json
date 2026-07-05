@@ -30,12 +30,13 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node src/lib/markdown/mermaid.js --check-cache && astro build",
     "check": "astro check",
     "lint": "oxlint .",
+    "mermaid:prune": "node src/lib/markdown/mermaid.js --prune",
     "preview": "astro preview",
-    "preview:worker": "astro build && wrangler dev",
-    "deploy": "wrangler deploy",
+    "preview:worker": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {
@@ -53,8 +54,12 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "@astrojs/markdown-satteri": "^0.3.3",
+    "@mermaid-js/mermaid-cli": "^11.16.0",
     "@tailwindcss/typography": "^0.5.20",
     "oxlint": "^1.72.0",
+    "puppeteer": "^25.3.0",
+    "satteri": "^0.9.4",
     "typescript": "^6.0.3",
     "wrangler": "^4.0.0"
   }
